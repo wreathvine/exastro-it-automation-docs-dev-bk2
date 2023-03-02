@@ -10,7 +10,12 @@ on:
 jobs:
   specific_review_requested:
     runs-on: ubuntu-latest
-    if: "(( github.event.pull_request.organization == 'exastro-suite') && ( github.event.pull_request.repository == 'exastro-it-automation-docs-dev'))"
+    if: "!(github.repository_owner == 'exastro-suite' \
+        && github.repository == 'exastro-it-automation-docs' \
+        && github.event.pull_request.organization == 'exastro-suite' \
+        && github.event.pull_request.repository == 'exastro-it-automation-docs-dev')"
     steps:
     - name: Check organization and repository
-      run: echo "::error::Disallowed Request source branch"
+      run: |
+        echo "::error::Disallowed Request source branch"
+        exit 1
