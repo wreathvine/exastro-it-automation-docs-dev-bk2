@@ -8,12 +8,12 @@ on:
       - opened
 
 jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: dump context
+        run: echo '${{ toJSON(github) }}'
   review_requested:
-    dump:
-      runs-on: ubuntu-latest
-      steps:
-        - name: dump context
-          run: echo '${{ toJSON(github) }}'
     runs-on: ubuntu-latest
     if: "!(github.repository_owner == 'exastro-suite' \
         && github.repository == 'exastro-it-automation-docs' \
