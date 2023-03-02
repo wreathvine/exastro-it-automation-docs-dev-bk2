@@ -12,4 +12,5 @@ jobs:
     runs-on: ubuntu-latest
     if: "(( github.event.pull_request.organization == 'exastro-suite') && ( github.event.pull_request.repository == 'exastro-it-automation-docs-dev'))"
     steps:
-        run: echo "::error::Disallowed Request source branch"
+    - name: Check organization and repository
+      run: echo "::error::Disallowed Request source branch"
